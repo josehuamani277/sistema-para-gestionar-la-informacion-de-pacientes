@@ -1,6 +1,14 @@
 
----use dsrp_gestor_hospitales;
----drop database GestionHospital;
+--use dsrp_gestor_hospitales;
+
+--drop database GestionHospital;
+
+---para forzar cierre de conexiones activas
+---ALTER DATABASE GestionHospital
+---SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+---GO
+
+
 CREATE DATABASE GestionHospital;
 GO
 
@@ -14,7 +22,8 @@ GO
 
 CREATE TABLE historial_medico(
 	id INT PRIMARY KEY IDENTITY(1,1),
-	Descripcion VARCHAR(255)
+	tipo_enfermedad VARCHAR(255),
+    descripcion VARCHAR(255)
 )
 GO
 
@@ -44,9 +53,9 @@ CREATE TABLE Medicos (
 
 --tabla de tipo de citas
 CREATE TABLE tipo_citas(
-id INT PRIMARY KEY IDENTITY(1,1),
-motivo_cita varchar(100) NOT NULL,
-observacion_del_medico VARCHAR(255) NOT NULL
+	id INT PRIMARY KEY IDENTITY(1,1),
+	motivo_cita varchar(100) NOT NULL,
+	observacion_del_medico VARCHAR(255) NOT NULL
 );
 GO
 -- Tabla Citas

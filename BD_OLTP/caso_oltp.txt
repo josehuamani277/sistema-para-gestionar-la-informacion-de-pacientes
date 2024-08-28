@@ -1,0 +1,28 @@
+Caso propuesto: sistema para gestionar la información de pacientes
+Contexto: El sistema de gestión de hospitales tiene como objetivo centralizar y facilitar el acceso a la información relacionada con pacientes, personal médico, tratamientos, habitaciones y citas. Esto mejorará la eficiencia operativa y la calidad del servicio prestado a los pacientes.
+Requisitos:
+Entidad y relación: 
+ 1.Pacientes:
+	- Cada paciente debe tener un identificador único (Paciente_ID).
+	- Se debe almacenar el nombre, dirección, número de teléfono y número de identificación del paciente.
+ 2.Médicos:
+	- Cada médico debe tener un identificador único (Médico_ID).
+	- Se debe almacenar el nombre completo, especialidad, contacto y número de licencia médica.
+ 3.Citas:
+	- Cada cita debe tener un identificador único (Cita_ID).
+	- Se debe registrar la fecha, hora, ID del paciente, ID del médico, y el tipo de cita (consulta, seguimiento, urgencia).
+ 4.Tratamientos:
+	- Cada tratamiento debe tener un identificador único (Tratamiento_ID).
+	- Se debe registrar el ID del paciente, ID del médico, descripción del tratamiento, duración prevista, y costos asociados.
+Entidades:
+	- Pacientes: Paciente_ID,nombre, apellido,Numero_documento, edad, genero, dirección, número de teléfono, fecha de nacimiento, historial_médico_ID.
+	- Médicos: Médico_ID, nombre, especialidad, contacto y número de licencia médica.
+	- Citas: cita_ID, fecha, hora, Paciente_ID, Médico_ID, tipo _cita_ID, duración de cita.
+	- Tipo_cita: tipo_cita_ID, motivo_cita, observación_del_medico.
+	- Tratamientos: tratamiento_ID, Paciente_ID, Médico_ID, descripción, duración, costos.
+	- Historial_medico: descripcion
+Relaciones:
+	- Un paciente puede tener múltiples citas y tratamientos, pero cada cita o tratamiento está asociado a un solo paciente.
+	- Un médico puede atender a múltiples pacientes en diferentes citas y tratamientos.
+	- Una cita esta vinculada a un paciente y un medico
+	- Un tratamiento esta vinculada a un paciente

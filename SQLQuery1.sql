@@ -1,11 +1,21 @@
-CREATE DATABASE dsrp_gestor_hospitales
+---use dsrp_gestor_hospitales;
+---drop database GestionHospital;
+CREATE DATABASE GestionHospital;
+GO
 
-USE dsrp_gestor_hospitales
-
+-- Usar la base de datos
+USE GestionHospital;
+GO
 -- CREAR SQUEMA
 --CREATE SCHEMA CLIENTE;
 -- DROP SQUEMA
 --DROP SCHEMA CLIENTE;
+
+CREATE TABLE historial_medico(
+	id INT PRIMARY KEY IDENTITY(1,1),
+	Descripcion VARCHAR(255)
+)
+GO
 
 CREATE TABLE Pacientes (
     id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
@@ -13,12 +23,14 @@ CREATE TABLE Pacientes (
     nombre VARCHAR(100) NOT NULL,
 	apellido VARCHAR(100) NOT NULL,
 	edad INT NOT NULL,
-	genero VARCHAR not null,
-    direccion VARCHAR(255) NULL,
+	genero VARCHAR(10) not null,
+    direccion VARCHAR(100) NULL,
     telefono VARCHAR(20) NULL,
     fecha_nacimiento DATE NOT NULL,
-    historial_medico VARCHAR(MAX) NULL
+    historial_medico_ID INT NULL,
+	CONSTRAINT fk_Pacientes_Historial_medico FOREIGN KEY (historial_medico_ID) REFERENCES historial_medico(id)
 );
+GO
 
 -- Tabla Médicos
 CREATE TABLE Medicos (
@@ -32,10 +44,10 @@ CREATE TABLE Medicos (
 --tabla de tipo de citas
 CREATE TABLE tipo_citas(
 id INT PRIMARY KEY IDENTITY(1,1),
-nombre varchar(100) NOT NULL,
-descripcion VARCHAR(255) NOT NULL
+motivo_cita varchar(100) NOT NULL,
+observacion_del_medico VARCHAR(255) NOT NULL
 );
-
+GO
 -- Tabla Citas
 
 CREATE TABLE Citas (
@@ -61,3 +73,4 @@ CREATE TABLE Tratamientos (
     CONSTRAINT fk_tratamiento_pacientes FOREIGN KEY (Paciente_ID) REFERENCES Pacientes(id),
     CONSTRAINT fk_tratamiento_medicos FOREIGN KEY (Medico_ID) REFERENCES Medicos(id)
 );
+GO

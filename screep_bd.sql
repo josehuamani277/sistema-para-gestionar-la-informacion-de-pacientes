@@ -1,3 +1,4 @@
+
 ---use dsrp_gestor_hospitales;
 ---drop database GestionHospital;
 CREATE DATABASE GestionHospital;
@@ -32,7 +33,7 @@ CREATE TABLE Pacientes (
 );
 GO
 
--- Tabla Médicos
+-- Tabla Mï¿½dicos
 CREATE TABLE Medicos (
     id INT PRIMARY KEY IDENTITY(1,1),
     nombre VARCHAR(255) NOT NULL,

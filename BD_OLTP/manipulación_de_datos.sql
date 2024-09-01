@@ -1,4 +1,3 @@
-
 USE GestionHospital;
 
 SELECT*FROM tipo_citas;

@@ -80,7 +80,12 @@ CREATE TABLE Tratamientos (
     Medico_ID INT NOT NULL,
     descripcion VARCHAR(MAX) NOT NULL,
     duracion INT NOT NULL, -- asumiendo que la duracion es en dias
+	Costo DECIMAL(18, 2) NOT NULL,
     CONSTRAINT fk_tratamiento_pacientes FOREIGN KEY (Paciente_ID) REFERENCES Pacientes(id),
     CONSTRAINT fk_tratamiento_medicos FOREIGN KEY (Medico_ID) REFERENCES Medicos(id)
 );
 GO
+
+--DROP TABLE Tratamientos;
+
+

@@ -74,7 +74,7 @@ SELECT
 	c.tipocita_ID as 'dim_tratamiento_ID',
 	COUNT(t.id) AS 'NumeroCitas',
 	t.Costo AS 'CostosTratamiento',
-	sum(t.Costo_total) AS 'Costo _total'
+	sum(t.Costo_total) AS 'Costo_total'
 FROM Citas c
 INNER JOIN Tratamientos t ON t.Paciente_ID=c.Paciente_ID
 INNER JOIN tipo_citas tc ON tc.id=c.tipocita_ID

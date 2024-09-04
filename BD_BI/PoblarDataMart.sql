@@ -71,14 +71,57 @@ SELECT
 	c.Medico_ID AS 'dim_medico_ID',
 	t.id AS 'dim_tratamiento_ID',
 	c.id AS 'dim_cita_ID',
-	c.tipocita_ID as 'dim_tratamiento_ID',
+	c.tipocita_ID as 'TipoCita',
 	COUNT(t.id) AS 'NumeroCitas',
-	t.Costo AS 'CostosTratamiento',
-	sum(t.Costo_total) AS 'Costo_total'
+	t.Costo AS 'CostosTratamiento'
 FROM Citas c
 INNER JOIN Tratamientos t ON t.Paciente_ID=c.Paciente_ID
 INNER JOIN tipo_citas tc ON tc.id=c.tipocita_ID
-
+WHERE c.tipocita_ID='1'
+GROUP BY
+	c.fecha,
+	c.Paciente_ID,
+	c.Medico_ID,
+	c.tipocita_ID,
+	t.id,
+	c.id,
+	t.Costo
+UNION
+SELECT	
+	c.fecha AS 'dim_tiempo_ID',
+	c.Paciente_ID AS 'dim_paciente_ID',
+	c.Medico_ID AS 'dim_medico_ID',
+	t.id AS 'dim_tratamiento_ID',
+	c.id AS 'dim_cita_ID',
+	c.tipocita_ID as 'TipoCita',
+	COUNT(t.id) AS 'NumeroCitas',
+	t.Costo AS 'CostosTratamiento'
+FROM Citas c
+INNER JOIN Tratamientos t ON t.Paciente_ID=c.Paciente_ID
+INNER JOIN tipo_citas tc ON tc.id=c.tipocita_ID
+WHERE c.tipocita_ID='2'
+GROUP BY
+	c.fecha,
+	c.Paciente_ID,
+	c.Medico_ID,
+	c.tipocita_ID,
+	t.id,
+	c.id,
+	t.Costo
+UNION
+SELECT	
+	c.fecha AS 'dim_tiempo_ID',
+	c.Paciente_ID AS 'dim_paciente_ID',
+	c.Medico_ID AS 'dim_medico_ID',
+	t.id AS 'dim_tratamiento_ID',
+	c.id AS 'dim_cita_ID',
+	c.tipocita_ID as 'TipoCita',
+	COUNT(t.id) AS 'NumeroCitas',
+	t.Costo AS 'CostosTratamiento'
+FROM Citas c
+INNER JOIN Tratamientos t ON t.Paciente_ID=c.Paciente_ID
+INNER JOIN tipo_citas tc ON tc.id=c.tipocita_ID
+WHERE c.tipocita_ID='3'
 GROUP BY
 	c.fecha,
 	c.Paciente_ID,
@@ -87,8 +130,6 @@ GROUP BY
 	t.id,
 	c.id,
 	t.Costo;
-SELECT*FROM h;
-
 	
 	
 

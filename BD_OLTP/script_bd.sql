@@ -4,9 +4,9 @@
 --drop database GestionHospital;
 
 ---para forzar cierre de conexiones activas
----ALTER DATABASE GestionHospital
----SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
----GO
+/*ALTER DATABASE GestionHospital
+SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+GO*/
 
 
 CREATE DATABASE GestionHospital;
@@ -62,8 +62,7 @@ GO
 
 CREATE TABLE Citas (
     id INT PRIMARY KEY IDENTITY(1,1),
-    fecha DATE NOT NULL,
-    hora TIME NOT NULL,
+    fecha DATETIME NOT NULL,
     Paciente_ID INT NOT NULL,
     Medico_ID INT NOT NULL,
     tipocita_ID INT NULL,
@@ -87,5 +86,7 @@ CREATE TABLE Tratamientos (
 GO
 
 --DROP TABLE Tratamientos;
+
+
 
 
